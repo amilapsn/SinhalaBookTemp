@@ -11,13 +11,37 @@
 \usepackage{array}
 \usepackage{fontspec}
 \usepackage[Sinhala,Latin]{ucharclasses}
-\setmainfont{Noto Serif}[NFSSFamily=standardserif]
-\setsansfont{Noto Sans}[NFSSFamily=standardsans]
 
-\newfontfamily\sinhalaserif{Noto Serif Sinhala}[
+% Download these and put in hierarchy
+\setmainfont{NotoSerif}[
+  Path=fonts/NotoSerif/,
+  UprightFont={NotoSerif-Regular},
+  ItalicFont={NotoSerif-Italic},
+  BoldFont={NotoSerif-Bold},
+  BoldItalicFont={NotoSerif-BoldItalic},
+  NFSSFamily=standardSerif
+]
+\setsansfont{NotoSans}[
+  Path=fonts/NotoSans/,
+  UprightFont={NotoSans-Regular},
+  ItalicFont={NotoSans-Italic},
+  BoldFont={NotoSans-Bold},
+  BoldItalicFont={NotoSans-BoldItalic},
+  NFSSFamily=standardsans
+]
+
+\newfontfamily\sinhalaserif{NotoSerifSinhala}[
+  Path=fonts/NotoSerifSinhala/,
+  UprightFont={NotoSerifSinhala-Regular},
+  ItalicFont={NotoSerifSinhala-Regular},
+	BoldFont={NotoSerifSinhala-Bold},
   NFSSFamily=sinhalaserif,
 ]
-\newfontfamily\sinhalasans{Noto Sans Sinhala}[
+\newfontfamily\sinhalasans{NotoSansSinhala}[
+  Path=fonts/NotoSansSinhala/,
+  UprightFont={NotoSansSinhala-Regular},
+  ItalicFont={NotoSansSinhala-Regular},
+	BoldFont={NotoSansSinhala-Bold},
   NFSSFamily=sinhalasans,
 ]
 
