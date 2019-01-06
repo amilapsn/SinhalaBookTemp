@@ -2,7 +2,6 @@
 *.lof
 *.log
 *.lot
-*.pdf
 *.gnuplot
 *.table
 *.gz
