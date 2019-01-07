@@ -16,31 +16,14 @@
 \usepackage[Sinhala,Latin]{ucharclasses}
 
 % Download these and put in the hierarchy
-\setmainfont{NotoSerif}[
-  Path=fonts/NotoSerif/,
-  UprightFont={NotoSerif-Regular},
-  ItalicFont={NotoSerif-Italic},
-  BoldFont={NotoSerif-Bold},
-  BoldItalicFont={NotoSerif-BoldItalic},
-  NFSSFamily=standardSerif
-]
-\setsansfont{NotoSans}[
-  Path=fonts/NotoSans/,
-  UprightFont={NotoSans-Regular},
-  ItalicFont={NotoSans-Italic},
-  BoldFont={NotoSans-Bold},
-  BoldItalicFont={NotoSans-BoldItalic},
-  NFSSFamily=standardsans
-]
-
-\newfontfamily\sinhalaserif{NotoSerifSinhala}[
+\setmainfont{NotoSerifSinhala}[
   Path=fonts/NotoSerifSinhala/,
   UprightFont={NotoSerifSinhala-Regular},
   ItalicFont={NotoSerifSinhala-Regular},
 	BoldFont={NotoSerifSinhala-Bold},
   NFSSFamily=sinhalaserif,
 ]
-\newfontfamily\sinhalasans{NotoSansSinhala}[
+\setsansfont{NotoSansSinhala}[
   Path=fonts/NotoSansSinhala/,
   UprightFont={NotoSansSinhala-Regular},
   ItalicFont={NotoSansSinhala-Regular},
@@ -48,15 +31,33 @@
   NFSSFamily=sinhalasans,
 ]
 
-\setDefaultTransitions{\switchto{standard}}{}
-\setTransitionTo{Sinhala}{\switchto{sinhala}}
+\newfontfamily\latinserif{NotoSerif}[
+  Path=fonts/NotoSerif/,
+  UprightFont={NotoSerif-Regular},
+  ItalicFont={NotoSerif-Italic},
+  BoldFont={NotoSerif-Bold},
+  BoldItalicFont={NotoSerif-BoldItalic},
+  NFSSFamily=latinserif
+]
+\newfontfamily\latinsans{NotoSans}[
+  Path=fonts/NotoSans/,
+  UprightFont={NotoSans-Regular},
+  ItalicFont={NotoSans-Italic},
+  BoldFont={NotoSans-Bold},
+  BoldItalicFont={NotoSans-BoldItalic},
+  NFSSFamily=latinsans
+]
+
+
+\setDefaultTransitions{\switchto{sinhala}}{}
+\setTransitionsForLatin{\switchto{latin}}{}
 
 \ExplSyntaxOn
 \NewDocumentCommand{\switchto}{m}
  {
   \str_case_e:vnF {f@family}
    {
-    { standardsans } { \fontfamily{#1sans}\selectfont }
+    { latinsans } { \fontfamily{#1sans}\selectfont }
     { sinhalasans } { \fontfamily{#1sans}\selectfont }
    }
    { \fontfamily{#1serif}\selectfont }
@@ -88,6 +89,5 @@
 % for links
 \usepackage{hyperref}
 
-\hypersetup{backref,
-            linktoc=all,
+\hypersetup{linktoc=all,
             colorlinks=true}
