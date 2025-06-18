@@ -8,3 +8,7 @@
 *.toc
 *\(busy\)
 *.out
+*.xdv
+*.fls
+*.fdb_latexmk
+.DS_Store

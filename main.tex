@@ -1,0 +1,133 @@
+\documentclass[10pt]{book}
+\usepackage{sinhala}
+\usepackage{csquotes}
+
+\def\ord{\mathrm{ord}}
+\newenvironment{proof}[1][සාධනය]{%
+  \par\noindent\textsl{#1.}\ }%   ← opening code
+  {\hfill$\square$\par}%          ← closing code
+
+\title{\bf ක්වො​​න්ට​​ම් ප​​රිග​ණක විද්‍යාව හා ග​​ණිත​ය}
+\author{​ටෙ​ඕ අ​​න්​ත්‍රෝ}
+
+
+\begin{document}                        
+\frontmatter                            
+\maketitle                              
+\tableofcontents                        
+\listoffigures
+\listoftables
+\mainmatter  
+\chapter{පූර්වාවශ්‍යතා}
+\section{සමූහ මත වූ සාධාරණත්​ව}
+\begin{definition}\label{def:group}
+\begin{align*}
+G \times G \to G\\
+(a, b) \mapsto a\cdot b 
+\end{align*}
+යන ද්විමය කර්මය උපාධාර කොටගත් $G$ කුලකයක් \textbf{සමූහයකි}. මෙහි,
+\begin{itemize}
+\item[$\bullet$] $\cdot$ කර්ම​ය සාංගමික වේ. එනම්, $\forall a, b, c \in G,\ (a \cdot b)\cdot c = a\cdot (b \cdot c)$.
+\item[$\bullet$] $G$ හි අනන්‍යතා අවයවයක් පවතියි. එනම්, $\exists e \in G,\ \forall a \in G,\ e \cdot a = a \cdot e = a$.
+\item[$\bullet$] සෑම $a \in G$ සඳහාම එහි ප්‍රතිලෝ​ම අවයවයක් පවතියි. එනම්, $\forall a\in G,\ \exists a^{-1} \in G,\ a \cdot a^{-1} = a^{-1} \cdot a = e$.
+\end{itemize}
+\end{definition}
+ඉහත නිර්වචනය~\ref{def:group} හි දක්වා ඇති $(G, \cdot)$ හි $\cdot$ කර්මය සාංගමික හා $G$ හි අනන්‍යතා අවයවයක් පැවත, ප්‍රතිලෝ​ම අවයවයක් නොපවතියි නම් එය \textbf{ඒකාභයක්} ලෙස හැඳින්වේ.
+\begin{example}
+$(\mathbb{Z}, +)$ සමූහය. $e = 0,\ a^{-1} = -a$.
+\end{example}
+\begin{example}\label{ex:group-non-abelian}
+$(\mathfrak{S}_3, \circ)$ හි $\circ$ ශ්‍රිත සංයුතිය වන සමූහය. මෙහි $\mathfrak{S}_3 = \{f:\{1, 2, 3\} \to \{1, 2, 3\} \text{ සමක්ෂේප​ණය}\}$.
+\end{example}
+
+\begin{definition}
+$\forall a, b \in G,\ a \cdot b = b \cdot a$ වූ $(G, \cdot)$ සමූහයක් \textbf{ඇබේලියානු} සමූහයක් ලෙස හැඳින්වේ.
+\end{definition}
+
+ඉහත උදාහරණය~\ref{ex:group-non-abelian} හි සමූහය ඇබේලියානු නොවේ.
+
+\begin{definition}
+$(G, \cdot)$ සමූහයක් හා $x\in G$ සඳහා, $x$ හි \textbf{ගණය} යනු $\#\{x^n \in G : n \in \mathbb{Z}\}$ වේ. මෙහි $x^n = x\cdot x\cdots x$ ($n$ වතාවක්) ලෙස අර්ථ දක්වයි. වඩා ප්‍රත්‍යක්ෂව $\min \{k\ge 1: x^k = e\}$ වන $k$ හි අගය $x$ හි ගණය වේ.
+\end{definition}
+
+\begin{example}
+$(\mathbb{Z}/5\mathbb{Z}, +)$ සලකන්න. මෙම සමූහය සඳහා $\mathbb{Z}$ කුලකයට \enquote{$n \sim m \leftrightarrow n-m$~$5$හි ගුණාකාරයක් ​වේ} ය​න තුල්‍යතා සම්බන්ධය පනවනු ලැබේ. නිදසුනක් ලෙස $2 \sim 7 \sim 12$ වේ. එය $2\equiv 7 \equiv 12 \pmod{5}$ ලෙස ද අංකනය කළ හැක.  යුක්ලිඩියානු විභාජනයෙන්, ඕනෑම $n = 5k + r$ ($n, k \in \mathbb{Z},\ 0\le r < 5$) ලෙස දැක්විය හැක. මෙය $\overline{n} \equiv \overline{r}$ ලෙස ද අංකනය කළ හැක. $\overline{n}$ මඟින් $n$ හි තුල්‍යතා පන්තිය දක්වයි. මෙම අංකනය අනුගමනය කරමින්, පහත පරිදි සුළු කිරීම් සිදු කළ හැක: $\overline{2} + \overline{6} = \overline{2+6} = \overline{8} = \overline{3}$. $(\mathbb{Z}/5\mathbb{Z}, \times)$ සමූහය සඳහා ද එපරිදි ම සුළු කිරීම් සිදු කළ හැක. එහිදී, $\overline{2} \times \overline{3} = \overline{6} = \overline{1}$ වේ.
+
+දැන්, $(\mathbb{Z}/5\mathbb{Z}, +)$ සලකන්න. එම සමූහයේ $\overline{2}$ හි ගණය සෙවීමට පහත පියවර අනුගමනය කළ හැක:
+\begin{align*}
+\overline{2}^1 &{}                    &&{}              &&&= \overline{2}\\
+\overline{2}^2 &=\overline{2+2}       &&{}              &&&= \overline{4}\\
+\overline{2}^3 &=\overline{2+2+2}     &&= \overline{6}  &&&= \overline{1} \\
+\overline{2}^4 &=\overline{2+2+2+2}   &&= \overline{8}  &&&= \overline{3} \\
+\overline{2}^5 &=\overline{2+2+2+2+2} &&= \overline{10} &&&= \overline{0}\\
+\end{align*}
+එනයින්, $(\mathbb{Z}/5\mathbb{Z}, +)$ සමූහයේ $2$ හි ගණය $5$ වේ. මෙය $\ord(2) = 5$ ලෙස ද අංකනය කළ හැක.
+
+දැන් $\mathbb{Z}/5\mathbb{Z}$ පාදක කොටගෙන ගුණ්‍යත සමූහය ව්‍යුත්පන්න කිරීම සැලකූ වි​ට අවධානය යොමු කළ යුතු කරුණක් වන්නේ එම කුලක​යේ ඇත්තේ $5$හි මාපාංකානුකූල ​ව ප්‍රතිලෝමී අවයවයන් පමණක් බවයි. එනම්, $(\mathbb{Z}/5\mathbb{Z})^\times = \{x \in \mathbb{Z}/5\mathbb{Z}: \exists y \in \mathbb{Z}/5\mathbb{Z},\ x \cdot y = 1\}$ ලෙස ගුණ්‍යත කුලකය අර්ථ දැක්වෙයි.  $2 \in (\mathbb{Z}/5\mathbb{Z})^\times$ මක්නිසාදයත්, $2 \cdot 3 = 6 \equiv 1 \pmod{5}$.
+
+දැන්, $((\mathbb{Z}/5\mathbb{Z})^\times, \times)$ සමූහයේ $\overline{2}$ හි ගණය සෙවීමට පහත පියවර අනුගමනය කළ හැක:
+\begin{align*}
+\overline{2}^1 &{}                                   &&{}               &&&= \overline{2}\\
+\overline{2}^2 &=\overline{2\times2}                 &&{}               &&&= \overline{4}\\
+\overline{2}^3 &=\overline{2\times2\times2}          &&= \overline{8}   &&&= \overline{3} \\
+\overline{2}^4 &=\overline{2\times2\times2\times2}   &&= \overline{16}  &&&= \overline{1} \\
+\end{align*}
+එනයින්, $((\mathbb{Z}/5\mathbb{Z})^\times, \times)$ සමූහයේ $\ord(2) = 4$.
+අතිරේක වශයෙන්, $((\mathbb{Z}/5\mathbb{Z})^\times, \times)$ සමූහයේ $2$ ට එම සමූහය තුළ අත් කර ගත හැකි උපරිම ගණය ඇති බැවින්, $2$ එම සමූහයේ ජනකයක් ලෙස හඳුන්වා දිය හැක. මෙය පසුව අර්ථ දක්වනු ලැබේ.
+\end{example}
+
+\begin{theorem}[{}ලග්‍රේන්ජ්]
+\label{thm:lagrange}
+සමූහ $(G, \cdot)$ හි $\forall x \in G$ සඳහා, $\ord(x) \mid |G|$.
+\end{theorem}
+\begin{proof}
+මඟහරින ලදී.
+\end{proof}
+ප්‍රමේයය~\ref{thm:lagrange} උපයෝගී කොටගෙන ගණ ගණනය පහසු කර ගත හැක. උදාහරණයක් ලෙස, $G = (\mathbb{Z}/15\mathbb{Z}, +)$ සමූහයේ $2$ හි ගණය සඳහා $|G| = 15$හි සාධක ව​න
+$1,3,5,15$ යන අගයන් පමණක් පරික්ෂා කිරීම ප්‍රමාණවත් වේ.
+
+\begin{lemma}
+පූර්ණ සාධාරණත්වයෙන්, ඕනෑම $n \ge 2$ සඳහා $(\mathbb{Z}/n\mathbb{Z}, +)$ සමූහයක් වේ. මෙහි, $\mathbb{Z}/n\mathbb{Z}$ කුලක​ය යනු $k\sim k' \leftrightarrow k-k'$ $n$හි ගුණාකාරයක් ​වේ යන සම්බන්ධයෙන් ජනිත වූ තුල්‍යතා පන්ති කුලක​ය වන අතර $\overline{k} + \overline{k'} = \overline{k+k'}$ ලෙස අර්ථ දක්වෙයි.
+\end{lemma}
+\begin{proof}
+මඟහරින ලදී.
+\end{proof}
+
+එපරිදි ම ගුණ්‍යතා නීතියක් ද $\overline{k} \times \overline{k'} = \overline{k\times k'}$ ලෙස අර්ථ දැක්විය හැකිය. 
+
+\begin{example}
+$((\mathbb{Z}/n\mathbb{Z})^\times, \times)$ සමූහයේ ප්‍රතිලෝමී අවයවයන් මොනවා ද? සරල නිදසුනක් ලෙස $(\mathbb{Z}/12\mathbb{Z})^\times$ සලකන්න. පැහැදිළිව $0 \notin (\mathbb{Z}/12\mathbb{Z})^\times$ මක්නිසාදයත් $\forall n \in \mathbb{Z}/12\mathbb{Z},\ 0 \times n = 0 \neq 1$. ($1$, $((\mathbb{Z}/12\mathbb{Z})^\times, \times)$ සමූහයේ අනන්‍යතා අවයවය වේ). $1\times1 \equiv 1 \pmod{12}$ බැවින්, $1$, $(\mathbb{Z}/12\mathbb{Z})^\times$හි ප්‍රතිලෝමී අවයවයක් වේ. $2 * k \equiv 1 \pmod{12}$ වන පරිදි $k \in \mathbb{Z}/12\mathbb{Z}$ නොමැති බැවින් $2$, $(\mathbb{Z}/12\mathbb{Z})^\times$ හි ප්‍රතිලෝමී අවයවයක් නොවේ. එපරිදිම $3, 4, 6, 8, 9, 10$ ද ප්‍රතිලෝමී අවයවයන් නොවන බව පෙන්විය හැක. $5\times5 \equiv 1\pmod{12}$ වන බැවින් $5$ ප්‍රතිලෝමී අවයවයක් වේ. එපරිදි, අනෙක් ප්‍රතිලෝමී අවයවයන් $7, 11$ බව පෙන්විය හැකිය. ඉහත දී $9$ ප්‍රතිලෝමී අවයවයක් නොවන්නේ $9k = 12m + 1$ වන පරිදි $m, k$ නිඛිල දෙකක් නොපවතින බැවිනි. එසේ වන්නේ $9k - 12m = 3(3k - 4m)$ යන්න $3$හි ගුණාකාරයක් වන බැවිනි. $8$ හා $10$ සඳහා ද ඉහත ආකාරයෙන් ප්‍රතිලෝමී නොවන බවට සාධනය කළ හැකිය.
+\end{example}
+
+\begin{proposition}
+$\overline{k}$, $\mathbb{Z}/n\mathbb{Z}$ හි ගුණ්‍යතව ප්‍රතිලෝමී වන්නේ $\gcd(k, n) = 1$ නම් හා නම්ම පමණි.
+\end{proposition}
+\begin{proof}
+\begin{align*}
+\overline{k} \text{ ප්‍රතිලෝමී වේ} &\Leftrightarrow \exists \overline{k'},\ \overline{k}\overline{k'} = \overline{1}\\
+&\Leftrightarrow \exists k', m \in \mathbb{Z},\ kk' = 1 + mn\\
+&\Leftrightarrow \exists k', m \in \mathbb{Z},\ kk' + (-m)n = 1\\
+&\Leftrightarrow \gcd(k, n) = 1.
+\end{align*}
+\end{proof}
+ඉ​​හත අ​වසාන පිය​වර​​ \textbf{බේ​සෝ} නීතිය ලෙ​​ස ද හැඳින්වේ.
+RSA කේ​තන​​ය ට ප​හත ප්‍රස්තුත​​ය වැද​ගත් වේ.
+\begin{proposition}
+\begin{align*}
+|(\mathbb{Z}/n\mathbb{Z})^\times| &= \#\{k:1\le k \le n,\ \gcd(k, n) = 1\}\\
+                                  &= \phi(n).
+\end{align*}
+\end{proposition}
+\begin{proof}
+ස​රල සාධ​නය​​කි.
+\end{proof}
+ඉ​හත $\phi(n)$ ශ්‍රිත​​ය, ඔ​​යිල​​ර් මුළ​​ස ශ්‍රිත​​ය ලෙ​​ස ද හැඳින්වේ.
+
+\begin{theorem}[{}චීන ශේ​​ෂ ප්‍රමේ​යය-{}චීශේෂ]
+$n = p_1^{\alpha_1}\cdots p_r^{\alpha_r}$ ($p_1, \ldots, p_r$ අ​ගය​යන් ප්‍රභින්න ප්‍රථ​මක සංඛ්‍යා වේ) වේ න​​ම් 
+\[
+\mathbb{Z}/n\mathbb{Z} \overset{f}{\cong} \mathbb{Z}/p_1^{\alpha_1}\times\ldots\times\mathbb{Z}/p_r^{\alpha_r}.
+\]
+\end{theorem}
+
+\end{document}  

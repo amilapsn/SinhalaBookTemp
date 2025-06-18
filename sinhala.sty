@@ -12,14 +12,18 @@
 \usepackage{array}
 
 % fonts
-\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
 \usepackage[Sinhala,Latin]{ucharclasses}
 
 % Download these and put in the hierarchy
+% 
+
 \setmainfont{NotoSerifSinhala}[
   Path=fonts/NotoSerifSinhala/,
   UprightFont={NotoSerifSinhala-Regular},
   ItalicFont={NotoSerifSinhala-Regular},
+  % ItalicFont=*,
+  ItalicFeatures=FakeSlant,
 	BoldFont={NotoSerifSinhala-Bold},
   NFSSFamily=sinhalaserif,
 ]
@@ -27,6 +31,8 @@
   Path=fonts/NotoSansSinhala/,
   UprightFont={NotoSansSinhala-Regular},
   ItalicFont={NotoSansSinhala-Regular},
+  % ItalicFont=*,
+  ItalicFeatures=FakeSlant,
 	BoldFont={NotoSansSinhala-Bold},
   NFSSFamily=sinhalasans,
 ]
@@ -48,6 +54,9 @@
   NFSSFamily=latinsans
 ]
 
+
+% \setDefaultTransitions{\switchto{latin}}{}
+% \setTransitionsForSinhala{\switchto{sinhala}}{}
 
 \setDefaultTransitions{\switchto{sinhala}}{}
 \setTransitionsForLatin{\switchto{latin}}{}
@@ -81,10 +90,21 @@
   ජූලි\or අගෝස්තු\or සැප්තැම්බර්\or ඔක්තෝම්බර්\or නොවැම්බර්\or දෙසැම්බර්\fi
   \space\number\day, \number\year}
 
+{\newtheorem{theorem}{ප්‍රමේය​ය}}
+{\newtheorem{definition}{නිර්වචනය}}
+{\newtheorem{example}{උදාහරණය}}
+{\newtheorem{lemma}{උපසාධ්‍යය}}
+{\newtheorem{exercise}{අභ්‍යාසය}}
+{\newtheorem{proposition}{ප්‍රස්තුත​ය}}
+{\newtheorem{remark}{සංලක්ෂ්‍ය​ය}}
+{\newtheorem{assumption}{උපකල්පන​ය}}
+{\newtheorem{corollary}{ඵලිත​ය}}
+
 \tolerance=1
 \emergencystretch=\maxdimen
 \hyphenpenalty=10000
 \hbadness=10000
+
 
 % for links
 \usepackage{hyperref}
